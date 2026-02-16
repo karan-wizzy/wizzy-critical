@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self'; script-src 'self'; connect-src https:; img-src 'self' data:; base-uri 'self'; form-action 'self'"
+    />
+    <title>Wizzy Critical Sync</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Wizzy Critical Console</h1>
+        <p>Critical tools for Wizzy operations.</p>
+        <p class="note">
+          Runs entirely in your browser. Credentials are never stored.
+        </p>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Features</h2>
+          <button
+            class="feature-button is-active"
+            data-feature-button="shopify-sync"
+          >
+            Shopify → Wizzy Collection Sync
+          </button>
+          <button class="feature-button" data-feature-button="coming-soon">
+            More features coming
+          </button>
+        </aside>
+
+        <section class="content">
+          <div class="feature-panel is-active" data-feature-panel="shopify-sync">
+            <section class="card">
+              <h2>Shopify Settings</h2>
+              <div class="grid">
+                <label>
+                  Store domain
+                  <input
+                    type="text"
+                    id="shopifyStoreDomain"
+                    placeholder="<store-name>.myshopify.com"
+                    required
+                  />
+                </label>
+                <label>
+                  Admin access token
+                  <input type="password" id="shopifyAccessToken" required />
+                </label>
+                <label>
+                  Collection ID
+                  <input
+                    type="text"
+                    id="shopifyCollectionId"
+                    placeholder="123456789"
+                    required
+                  />
+                </label>
+                <label>
+                  API version
+                  <input type="text" id="shopifyApiVersion" value="2024-01" />
+                </label>
+              </div>
+            </section>
+
+            <section class="card">
+              <h2>Wizzy Settings</h2>
+              <div class="grid">
+                <label>
+                  Sync URL
+                  <input type="text" id="wizzySyncUrl" required />
+                </label>
+                <label>
+                  Store ID
+                  <input type="text" id="wizzyStoreId" required />
+                </label>
+                <label>
+                  API key
+                  <input type="password" id="wizzyApiKey" required />
+                </label>
+                <label>
+                  Private key
+                  <input type="password" id="wizzyPrivateKey" required />
+                </label>
+              </div>
+            </section>
+
+            <section class="card">
+              <h2>Advanced (optional)</h2>
+              <div class="grid">
+                <label>
+                  Max products to fetch
+                  <input
+                    type="number"
+                    id="maxProducts"
+                    min="1"
+                    max="1000"
+                    value="500"
+                  />
+                </label>
+                <label>
+                  Shopify max retries
+                  <input
+                    type="number"
+                    id="shopifyMaxRetries"
+                    min="1"
+                    placeholder="5"
+                  />
+                </label>
+                <label>
+                  Shopify initial delay (ms)
+                  <input
+                    type="number"
+                    id="shopifyInitialDelayMs"
+                    min="100"
+                    step="100"
+                    placeholder="500"
+                  />
+                </label>
+                <label>
+                  Wizzy max retries
+                  <input
+                    type="number"
+                    id="wizzyMaxRetries"
+                    min="1"
+                    placeholder="3"
+                  />
+                </label>
+                <label>
+                  Wizzy initial delay (ms)
+                  <input
+                    type="number"
+                    id="wizzyInitialDelayMs"
+                    min="100"
+                    step="100"
+                    placeholder="500"
+                  />
+                </label>
+              </div>
+            </section>
+
+            <section class="actions">
+              <button id="syncButton">Start Sync</button>
+              <span id="status" class="status">Idle</span>
+            </section>
+
+            <section class="card">
+              <h2>Logs</h2>
+              <pre id="logOutput">Waiting for sync...</pre>
+            </section>
+          </div>
+
+          <div class="feature-panel" data-feature-panel="coming-soon">
+            <section class="card">
+              <h2>More features are coming</h2>
+              <p>
+                This console will grow to include additional critical workflows.
+                Select another feature when it becomes available.
+              </p>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
